@@ -8,7 +8,7 @@
   
     <h1><u><b>Math Equations</b></u></h1>
     <div id="equations"></div>
-	<button onclick="location.reload()">New Equations</button>
+	<button onclick="location.reload()" style="font-size: 24px; padding: 12px;">New Equations</button>
 
     <script>
       // Generate a random array of numbers from 1 to 10
@@ -104,10 +104,11 @@ answers.push(total);
 answers.push(result);
 
 // Shuffle the answers array
-document.getElementById("equations").innerHTML += `<br><h2>Answers: ${answers.join(", ")}</h2>`;
+
+document.getElementById("equations").innerHTML += `<hr line><h2>Answers: ${answers.join(", ")}</h2>`;
 shuffleArray(answers);
 
-document.getElementById("equations").innerHTML += `<h2>Answers in Random Order: ${answers.join(", ")}</h2>`;
+document.getElementById("equations").innerHTML += `<h2>Answers in Random Order: ${answers.join(", ")}</h2><hr line><br>`;
 
 // Helper function to shuffle an array
 function shuffleArray(array) {
