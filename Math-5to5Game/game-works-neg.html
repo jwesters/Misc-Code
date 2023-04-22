@@ -84,9 +84,8 @@
       answers.push(result);
 
       // Shuffle the answers array
-      shuffleArray(answers);
-
       document.getElementById("equations").innerHTML += `<hr line><h2>Answers: ${answers.join(", ")}</h2>`;
+	  shuffleArray(answers);
       document.getElementById("equations").innerHTML += `<h2>Answers in Random Order: ${answers.join(", ")}</h2><hr line><br>`;
 
       // Helper function to shuffle an array
