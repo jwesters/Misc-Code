@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Math Equations</title>
+  </head>
+  <body>
+  
+    <h1><u><b>Math Equations</b></u></h1>
+    <div id="equations"></div>
+	<button onclick="location.reload()" style="font-size: 24px; padding: 12px;">New Equations</button>
+
+    <script>
+      // Generate a random array of numbers from -5 to 5 (excluding 0), each used only once
+      let nums = [];
+      for (let i = -5; i <= 5; i++) {
+        if (i !== 0) {
+          nums.push(i);
+        }
+      }
+      shuffleArray(nums);
+
+      // Choose two numbers to divide
+      let num1, num2, answer;
+      for (let i = 0; i < nums.length; i++) {
+        for (let j = i + 1; j < nums.length; j++) {
+          if (nums[i] % nums[j] === 0) {
+            num1 = nums[i];
+            num2 = nums[j];
+            answer = num1 / num2;
+            document.getElementById("equations").innerHTML += `<h2>${num1} ÷ ${num2} = <b>${answer}</b><br>`;
+            nums.splice(j, 1);
+            nums.splice(i, 1);
+            break;
+          }
+        }
+        if (answer) break;
+      }
+
+      // Choose two numbers to multiply
+      let num3 = nums.shift();
+      let num4 = nums.shift();
+      let product = num3 * num4;
+      document.getElementById("equations").innerHTML += `<h2>${num3} × ${num4} = <b>${product}</b><br>`;
+
+      // Choose two numbers to subtract
+      let num5 = nums.shift();
+      let num6 = nums.shift();
+      let difference = num5 - num6;
+      document.getElementById("equations").innerHTML += `<h2>${num5} - ${num6} = <b>${difference}</b><br>`;
+
+      // Choose two numbers to add
+      let num7 = nums.shift();
+      let num8 = nums.shift();
+      let total = num7 + num8;
+      document.getElementById("equations").innerHTML += `<h2>${num7} + ${num8} = <b>${total}</b><br>`;
+
+        // Choose operation between the two remaining numbers
+      let [num9, num10] = nums;
+      let operation = ["add", "multiply", "subtract"][Math.floor(Math.random() * 3)];
+      let result;
+      if (operation === "add") {
+        result = num9 + num10;
+        document.getElementById("equations").innerHTML += `<h2>${num9} + ${num10} = <b>${result}</b><br>`;
+      } else if (operation === "multiply") {
+        result = num9 * num10;
+        document.getElementById("equations").innerHTML += `<h2>${num9} * ${num10} = <b>${result}</b><br>`;
+      } else {
+        result = num10 - num9;
+        document.getElementById("equations").innerHTML += `<h2>${num10} - ${num9} = <b>${result}</b><br> `;
+      }
+
+      // Generate a random array of numbers from 1 to 10
+      let nums2 = Array.from({length: 10}, (_, i) => i + 1);
+
+      let answers = [];
+
+      // ... code to generate equations ...
+
+      answers.push(answer);
+      answers.push(product);
+      answers.push(difference);
+      answers.push(total);
+      answers.push(result);
+
+      // Shuffle the answers array
+      shuffleArray(answers);
+
+      document.getElementById("equations").innerHTML += `<hr line><h2>Answers: ${answers.join(", ")}</h2>`;
+      document.getElementById("equations").innerHTML += `<h2>Answers in Random Order: ${answers.join(", ")}</h2><hr line><br>`;
+
+      // Helper function to shuffle an array
+      function shuffleArray(array) {
+        for (let i = array.length - 1; i > 0; i--) {
+          const j = Math.floor(Math.random() * (i + 1));
+          [array[i], array[j]] = [array[j], array[i]];
+        }
+      }
+	  
+	     </script>
+  </body>
+</html>
