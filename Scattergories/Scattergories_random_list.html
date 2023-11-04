@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Scattergories List Generator</title>
+    <script>
+        // List of items
+        var itemsList = [
+              "A boy’s name",
+			"A girl’s name",
+			"Airlines",
+			"Animals",
+			"Animals in a zoo",
+			"Animals in books or movies",
+			"Aquatic animals",
+			"Art projects",
+			"Authors",
+			"Awards/ceremonies",
+			"Bad habits",
+			"Beverages",
+			"Biblical names",
+			"Birds",
+			"Board games",
+			"Bodies of water",
+			"Body parts",
+			"Book titles",
+			"Brands",
+			"Breakfast foods",
+			"Capital cities",
+			"Capitals",
+			"Cars",
+			"Cartoon characters",
+			"Celebrities",
+			"Children's books",
+			"Cities in your country",
+			"Clothing",
+			"Clothing brands",
+			"College majors",
+			"Colleges/universities",
+			"Colors",
+			"Confectionery",
+			"Cooking utensils",
+			"Countries",
+			"Crimes",
+			"Dog breeds",
+			"Drinks",
+			"Electronic devices",
+			"Ethnic foods",
+			"Excuses for being late",
+			"Expensive items",
+			"Extreme sports",
+			"Famous animals",
+			"Famous athletes",
+			"Famous duos and trios",
+			"Famous historical figures",
+			"Fears",
+			"Fictional characters",
+			"Fish",
+			"Flowers",
+			"Foods you eat raw",
+			"Footwear",
+			"Foreign cities",
+			"Foreign words used in English",
+			"Fried foods",
+			"Fruits",
+			"Furniture",
+			"Games",
+			"Gemstones",
+			"Halloween costumes",
+			"Heads of state/government",
+			"Healthy foods",
+			"Historic events",
+			"Historical figures",
+			"Hobbies",
+			"Holiday activities",
+			"Holidays",
+			"Home appliances",
+			"Household chores",
+			"Ice cream flavors",
+			"Ingredients that belong on a pizza",
+			"Items in a kitchen",
+			"Items in a suitcase",
+			"Items in a vending machine",
+			"Items in this room",
+			"Items you take on a trip",
+			"Jobs",
+			"Kinds of candy",
+			"Kinds of soup",
+			"Landmarks",
+			"Languages",
+			"Leisure activities",
+			"Magazines",
+			"Mammals",
+			"Menu items",
+			"Methods of transportation",
+			"Movie titles",
+			"Musical groups",
+			"Musical instruments",
+			"Musicals",
+			"Mythical creatures",
+			"Mythological creatures",
+			"Nicknames",
+			"Notorious people",
+			"Occupations",
+			"Office supplies",
+			"Outdoor activities",
+			"Parks",
+			"Pets",
+			"Pizza toppings",
+			"Plants",
+			"Presidents or prime ministers",
+			"Reasons to call",
+			"Reasons to take out a loan",
+			"Relatives",
+			"Reptiles/amphibians",
+			"Restaurants",
+			"Sandwiches",
+			"School subjects",
+			"Singers",
+			"Slang terms for money",
+			"Snack foods",
+			"Spices/herbs",
+			"Spicy foods",
+			"Sports",
+			"Sports equipment",
+			"Sports teams",
+			"States or provinces",
+			"Stones/gems",
+			"Store names",
+			"Superheroes",
+			"Things associated with Christmas",
+			"Things associated with Eid",
+			"Things associated with summer",
+			"Things at a carnival",
+			"Things at a circus",
+			"Things at a football game",
+			"Things found in a desk",
+			"Things found in New York",
+			"Things in a medicine cabinet",
+			"Things in a museum",
+			"Things in a park",
+			"Things in an airport",
+			"Things in an office",
+			"Things in space",
+			"Things in the sky",
+			"Things on a beach",
+			"Things on a map",
+			"Things that are blue",
+			"Things that are round",
+			"Things that are sticky",
+			"Things that have buttons",
+			"Things that have spots",
+			"Things that have wheels",
+			"Things that make you smile",
+			"Things that smell bad",
+			"Things that you shout",
+			"Things that you wear",
+			"Things with tails",
+			"Things you can eat in a cinema",
+			"Things you can find in a bathroom",
+			"Things you do at work",
+			"Things you do every day",
+			"Things you find in nature",
+			"Things you get in the mail",
+			"Things you get tickets for",
+			"Things you make",
+			"Things you replace",
+			"Things you save up to buy",
+			"Things you see on a road trip",
+			"Things you shouldn't touch",
+			"Things you store items in",
+			"Tools",
+			"Toys",
+			"Trees",
+			"TV shows",
+			"Types of candy",
+			"Types of drinks",
+			"Types of music",
+			"Types of weather",
+			"Vacation destination",
+			"Vacation spots",
+			"Vegetables",
+			"Video games",
+			"Villains",
+			"Ways to travel",
+			"Weather",
+			"Word with four letters",
+			"Words associated with exercise",
+			"Words associated with winter",
+			"World cuisine"
+        ];
+
+        function getRandomItems() {
+               var randomItems = [];
+            while (randomItems.length < 10) {
+                var randomIndex = Math.floor(Math.random() * itemsList.length);
+                var selectedItem = itemsList[randomIndex];
+                if (!randomItems.includes(selectedItem)) {
+                    randomItems.push(selectedItem);
+                }
+            }
+            return randomItems;
+        }
+
+        function getRandomLetter() {
+            var validLetters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.replace(/[QUVXYZ]/g, '');
+            var randomIndex = Math.floor(Math.random() * validLetters.length);
+            return validLetters[randomIndex];
+        }
+
+        function generateRandomList() {
+            var randomItems = getRandomItems();
+            var listHTML = "<ol>";
+            for (var i = 0; i < randomItems.length; i++) {
+                listHTML += "<li>" + randomItems[i] + "</li>";
+            }
+            listHTML += "</ol";
+
+            document.getElementById("randomList").innerHTML = listHTML;
+        }
+
+        function generateNewRandomLetter() {
+            var randomLetter = getRandomLetter();
+            document.getElementById("randomLetter").textContent = randomLetter;
+        }
+
+        function reloadPage() {
+            generateRandomList(); // Regenerate the random list
+        }
+
+        // Automatically generate the list and letter when the page loads
+        window.addEventListener('load', function() {
+            generateRandomList();
+            generateNewRandomLetter(); // Generate a random letter on page load
+        });
+    </script>
+</head>
+<body>
+    <h1>Scattergories List Generator</h1>
+    <hr>
+    <p><font size="+2">Random Letter: <b><span id="randomLetter"></span></b></font></p>
+    <button onclick="generateNewRandomLetter()">Get New Letter</button>
+    <hr>
+    <div id="randomList"></div>
+    <button onclick="reloadPage()">Generate New List</button>
+</body>
+</html>
